@@ -181,5 +181,9 @@ restartGame() {
     
     // Рендерим сцену
     this.renderer.render(this.scene, this.camera);
+       // Плавное перемещение камеры за птеродактилем
+    this.camera.position.x += (this.pterodactyl.object.position.x - this.camera.position.x) * 0.05;
+    this.camera.position.y += (this.pterodactyl.object.position.y - this.camera.position.y) * 0.05;
+    this.camera.lookAt(this.pterodactyl.object.position);
   }
 }
