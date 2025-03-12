@@ -66,7 +66,7 @@ class Pterodactyl {
     // Физические свойства
     this.velocity = new THREE.Vector3(0, 0, 0);
     this.speed = 0.15;
-    this.gravity = -0.005;
+    // гравитация this.gravity = -0.005;
     this.lift = 0.015;
     
     // Создаем ограничивающую сферу для определения столкновений
@@ -90,13 +90,29 @@ class Pterodactyl {
   
   // Метод для обновления положения птеродактиля
   update(controls, deltaTime) {
+  // Если не нажата клавиша "вверх", замедляем вертикальную скорость
+  if (!controls.up) {
+    this.velocity.y *= 0.95; // Коэффициент затухания (0.95 = 5% потерь за кадр)
+  }
+
+  // Обрабатываем управление
+  if (controls.up) {
+    this.velocity.y += this.lift;
+  }
+
+  // Ограничиваем скорость
+  this.velocity.y = Math.max(Math.min(this.velocity.y, 0.2), -0.2);
+}
+
+  
+  // update(controls, deltaTime) {
     // Применяем гравитацию
-    this.velocity.y += this.gravity;
+    // this.velocity.y += this.gravity;
     
     // Обрабатываем управление
-    if (controls.up) {
-      this.velocity.y += this.lift;
-    }
+    // if (controls.up) {
+      // this.velocity.y += this.lift;
+    //}
     
     if (controls.left) {
       this.velocity.x = -this.speed;
