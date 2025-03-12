@@ -123,28 +123,30 @@ class Game {
   }
   
   // Метод для завершения игры
-  gameOver() {
-    this.isGameOver = true;
-    this.gameOverElement.classList.remove('hidden');
-  }
+ gameOver() {
+  this.isGameOver = true;
+  this.gameOverElement.classList.remove('hidden');
+  this.clock.stop(); // Останавливаем таймер
+}
+
+// Метод для перезапуска игры
+restartGame() {
+  this.isGameOver = false;
+  this.score = 0;
+  this.scoreElement.textContent = `Счет: ${this.score}`;
+  this.gameOverElement.classList.add('hidden');
   
-  // Метод для перезапуска игры
-  restartGame() {
-    this.isGameOver = false;
-    this.score = 0;
-    this.scoreElement.textContent = `Счет: ${this.score}`;
-    this.gameOverElement.classList.add('hidden');
-    
-    // Сбрасываем положение птеродактиля
-    this.pterodactyl.reset();
-    
-    // Сбрасываем генератор скал
-    this.rockGenerator.reset();
-    
-    // Сбрасываем время
-    this.clock.start();
-    this.elapsedTime = 0;
-  }
+  // Сбрасываем положение птеродактиля
+  this.pterodactyl.reset();
+  
+  // Сбрасываем генератор скал
+  this.rockGenerator.reset();
+  
+  // Сбрасываем время
+  this.clock.start();
+  this.elapsedTime = 0;
+}
+
   
   // Основной игровой цикл
   animate() {
