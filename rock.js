@@ -70,7 +70,7 @@ class RockGenerator {
     );
     
     // Случайный размер скалы
-    const size = 1 + Math.random() * 2 * this.difficulty;
+    const size = Math.min(5, 1 + Math.random() * 2 * this.difficulty); // Максимальный размер 5
     
     // Создаем новую скалу
     const rock = new Rock(position, size);
