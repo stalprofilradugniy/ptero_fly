@@ -84,7 +84,7 @@ class Pterodactyl {
       
       // Анимируем движение крыльев вверх и вниз
       leftWing.rotation.z = Math.sin(time * 5) * 0.2;
-      rightWing.rotation.z = Math.sin(time * 5) * 0.2;
+      rightWing.rotation.z = -Math.sin(time * 5) * 0.2;
     }
   }
   
