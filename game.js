@@ -29,6 +29,14 @@ class Game {
     
     // Создаем генератор скал
     this.rockGenerator = new RockGenerator(this.scene);
+
+       // Добавляем ландшафт
+    this.terrain = new Terrain(this.scene);
+
+    // Настраиваем камеру
+    this.camera.position.set(0, 0, 50);
+    this.camera.lookAt(0, 0, 0);
+
     
     // Состояние игры
     this.isGameOver = false;
